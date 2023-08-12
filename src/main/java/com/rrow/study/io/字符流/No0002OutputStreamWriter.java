@@ -12,7 +12,7 @@ import java.io.Writer;
 public class No0002OutputStreamWriter {
     public static void main(String[] args) {
         try (Writer output = new FileWriter("writer.txt")) {
-            output.write("您好,我是Rrow favorite is nachoneko");
+            output.write("您好,我是Rrow favorite is nachoneko & 猫羽雫");
         } catch (IOException e) {
             e.printStackTrace();
         }
