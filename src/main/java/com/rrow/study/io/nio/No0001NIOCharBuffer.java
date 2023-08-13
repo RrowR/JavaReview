@@ -7,7 +7,7 @@ import java.nio.CharBuffer;
  * @date: 2023/8/13 17:04
  * Description:
  */
-public class No0001NIO {
+public class No0001NIOCharBuffer {
     public static void main(String[] args) {
         // 分配一个容量为8的CharBuffer
         CharBuffer buffer = CharBuffer.allocate(8);
