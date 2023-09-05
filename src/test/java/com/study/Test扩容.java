@@ -14,4 +14,10 @@ public class Test扩容 {
         int b = 10 + (10 >> 1);
         System.out.println("b = " + b);
     }
+
+    @Test
+    public void roundTest() {
+        long l = Math.round(-1.5);
+        System.out.println("l = " + l);
+    }
 }
