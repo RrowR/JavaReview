@@ -3,6 +3,9 @@ package com.rrow.study.controller;
 import com.rrow.study.dto.ExcelDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +33,41 @@ public class StudyController {
     public void exportExcel(ExcelDTO excelDTO, HttpServletResponse response) throws IOException {
         String fileName = "投资建议书.xlsx";
         XSSFWorkbook wb = new XSSFWorkbook();
-        wb.createSheet("投资建议书");
+        XSSFSheet sheet = wb.createSheet("投资建议书");
+
+        // 隐藏除大格子外的所有其他单元格
+        int totalRows = 30;
+        int totalCols = 20;
+
+        for (int i = 0; i < totalRows; i++) {
+            Row row = sheet.createRow(i);
+            for (int j = 0; j < totalCols; j++) {
+                if (!(i >= 0 && i <= 29 && j >= 0 && j <= 19)) {
+                    sheet.setColumnHidden(j, true);
+                    Cell cell = row.createCell(j);
+                    cell.setCellValue("");
+                }
+            }
+        }
+
+        // 合并单元格
+        int firstRow = 0; // 开始行
+        int lastRow = 29; // 结束行
+        int firstCol = 0; // 开始列
+        int lastCol = 19; // 结束列
+        sheet.addMergedRegion(new CellRangeAddress(firstRow, lastRow, firstCol, lastCol));
+
+        // 写入内容到合并的单元格
+        Row row = sheet.getRow(0);
+        if (row == null) {
+            row = sheet.createRow(0);
+        }
+        Cell cell = row.getCell(0);
+        if (cell == null) {
+            cell = row.createCell(0);
+        }
+        cell.setCellValue("这是合并的大格子");
+
 
         //下载
         response.setContentType(getContentType(fileName));
