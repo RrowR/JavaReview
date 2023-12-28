@@ -14,4 +14,11 @@ public class TestJoin {
         String join = String.join(",", strArray);
         System.out.println(join);
     }
+
+    @Test
+    public void join02Single() {
+        String[] strArray = {};
+        String join = String.join(",", strArray);
+        System.out.println(join);
+    }
 }
