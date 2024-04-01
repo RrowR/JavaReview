@@ -8,5 +8,6 @@ package com.rrow.study.面试题;
 public class 正则验证手机号 {
     public static void main(String[] args) {
         String pattern = "d";
+        System.out.println("pattern = " + pattern);
     }
 }
