@@ -86,4 +86,12 @@ public class TestParseInt {
         long end = System.currentTimeMillis();
         System.out.println("end-start = " + (end - start));
     }
+
+    @Test
+    public void testDateChange() {
+        String date = "2020-01-10";
+        String date2 = "20200110";
+        System.out.println("date.replaceAll(\"-\",\"\") = " + date.replaceAll("-", ""));
+        System.out.println("date2.replaceAll(\"-\",\"\") = " + date2.replaceAll("-", ""));
+    }
 }
