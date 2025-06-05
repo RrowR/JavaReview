@@ -25,9 +25,11 @@ public class No0001NIOCharBuffer {
         printState(buffer);
 
         // 读取字符
+        System.out.print("读取到的数据为: ");
         while (buffer.hasRemaining()) {
             System.out.print(buffer.get());
         }
+        System.out.println("\n");
 
         // 调用clear()方法，清空缓冲区，将 position 的值置为 0，将 limit 的值置为 capacity 的值
         buffer.clear();
